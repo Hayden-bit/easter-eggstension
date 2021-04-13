@@ -1,0 +1,19 @@
+echo Please input your client ID:
+read -p ">" clientID
+echo Read client ID: $clientID
+echo
+echo Please input your client secret:
+read -p ">" clientSecret
+echo Read client secret: $clientSecret
+echo
+echo Please follow this link to retrieve a code:
+echo "https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&client_id=$clientID&redirect_uri=urn:ietf:wg:oauth:2.0:oob"
+echo
+echo Please input the code retrieved here:
+read -p ">" code
+echo Read code: $code
+echo
+echo Token response:
+curl "https://accounts.google.com/o/oauth2/token" -d \
+"client_id=$clientID&client_secret=$clientSecret&code=$code&grant_type=authorization_code&redirect_uri=urn:ietf:wg:oauth:2.0:oob"
+echo
