@@ -1,11 +1,41 @@
-echo Please input your client ID:
-read -p ">" clientID
-echo Read client ID: $clientID
-echo
-echo Please input your client secret:
-read -p ">" clientSecret
-echo Read client secret: $clientSecret
-echo
+echo Should the client ID and secret be read from files or from STDIN? 
+echo If answered \'y\' then the values will be retrieved from files \'client_id.txt\' and \'client_secret.txt\' .
+read -p ">" readFiles
+if [[ $readFiles == y ]] 
+then 
+    echo Reading values from files
+    
+    # Utilizing xargs removes leading and trailing whitespace.
+    clientID=$(cat client_id.txt | xargs)
+    if [[ $(echo $?) != 0 ]]
+    then
+        echo File \'client_id.txt\' couldn\'t be read! Aborting.
+        exit 1
+    fi
+    echo Client ID read: $clientID
+
+    # Utilizing xargs removes leading and trailing whitespace.
+    clientSecret=$(cat client_secret.txt | xargs)
+    if [[ $(echo $?) != 0 ]]
+    then
+        echo File \'client_secret.txt\' couldn\'t be read! Aborting.
+        exit 1
+    fi
+    echo Client secret read: $clientSecret
+
+    echo
+else
+    echo Reading values from STDIN
+    echo Please input your client ID:
+    read -p ">" clientID
+    echo Read client ID: $clientID
+    echo
+    echo Please input your client secret:
+    read -p ">" clientSecret
+    echo Read client secret: $clientSecret
+    echo
+fi
+
 echo Please follow this link to retrieve a code:
 echo "https://accounts.google.com/o/oauth2/auth?response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&client_id=$clientID&redirect_uri=urn:ietf:wg:oauth:2.0:oob"
 echo
