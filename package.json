@@ -1,0 +1,6 @@
+{
+  "name": "unit-testing",
+  "scripts": {
+    "test": "jest"
+  }
+}
