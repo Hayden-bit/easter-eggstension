@@ -1,0 +1,13 @@
+name: test2
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create package.json
+      run: echo "{\"name\":\"my-awesome-package\",\"version\":\"1.0.0\"}" > package.json
+    - name: Install modules
+      run: yarn
+    - name: Run tests
+      run: yarn test
