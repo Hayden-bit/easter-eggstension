@@ -1,0 +1,5 @@
+# Arguments: client ID, client secret, refresh token
+# Returns the json payload containing a new access token
+
+curl "https://www.googleapis.com/oauth2/v4/token" -d \
+"client_id=$1&client_secret=$2&refresh_token=$3&grant_type=refresh_token&redirect_uri=urn:ietf:wg:oauth:2.0:oob"
