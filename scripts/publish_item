@@ -1,0 +1,16 @@
+# Arguments: access token, app ID, publish target (if argument is not 'trustedTesters' this will be set to 'default')
+
+if [[ $3 != trustedTesters ]]
+then
+    target=default
+else
+    target=$3
+fi
+
+curl \
+-H "Authorization: Bearer $1"  \
+-H "x-goog-api-version: 2" \
+-H "Content-Length: 0" \
+-X POST \
+-v \
+https://www.googleapis.com/chromewebstore/v1.1/items/$2/publish?publishTarget=$target
