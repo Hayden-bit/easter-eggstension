@@ -1,0 +1,26 @@
+name: Publish to trusted testers
+
+env:
+  token: place_holder_for_access_token
+  app_id: place_holder_for_app_id
+
+on:
+  push:
+    branches: [ dev ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  publish_item:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install zip and zip the extension
+      - run: |
+          sudo apt install zip
+          zip -r extension.zip extension
+      - name: Update the item in the store
+        run: ./scripts/update_item $token $app_id extension.zip
+      - name: Publish the item to trusted testers
+        run: ./scripts/publish_item $token $app_id trustedTesters
