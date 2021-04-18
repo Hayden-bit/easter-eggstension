@@ -24,11 +24,16 @@ jobs:
       - name: Get access token
         id: get_token
         run: |
-         ./scripts/use_refresh_token $client_id $client_secret $refresh_token >> output.json
-         token=$(cat output.json | jq ".access_token")
-         echo "::set-output name=token::$token"
+          chmod +x ./scripts/use_refresh_token
+          ./scripts/use_refresh_token $client_id $client_secret $refresh_token >> output.json
+          token=$(cat output.json | jq ".access_token")
+          echo "::set-output name=token::$token"
       - name: Update the item in the store
-        run: ./scripts/update_item ${{ steps.get_token.outputs.token }} $app_id extension.zip
+        run: |
+          chmod +x ./scripts/update_item
+          ./scripts/update_item ${{ steps.get_token.outputs.token }} $app_id extension.zip
       # Might need some time to wait in-between here
       - name: Publish the item to trusted testers
-        run: ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
+        run:  |
+          chmod +x ./scripts/publish_item
+          ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
