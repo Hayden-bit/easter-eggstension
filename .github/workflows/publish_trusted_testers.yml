@@ -4,7 +4,7 @@ env:
   client_id: ${{ secrets.CLIENT_ID }}
   client_secret: ${{ secrets.CLIENT_SECRET }}
   refresh_token: ${{ secrets.REFRESH_TOKEN }}
-  app_id: ${{ secrets.APP_ID }}
+  app_id: ${{ secrets.APP_ID_PRIVATE }}
 
 on:
   push:
