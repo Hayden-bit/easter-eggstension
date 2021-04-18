@@ -1,5 +1,8 @@
-name: Tests and publish
-on: workflow_dispatch
+name: Run tests
+on: 
+  push:
+  pull_request:
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
