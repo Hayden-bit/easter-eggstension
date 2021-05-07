@@ -20,18 +20,12 @@ jobs:
         run: |
           sudo apt install zip
           zip -r extension.zip extension
-      # Might have to install jq
       - name: Get access token
         id: get_token
         run: |
           chmod +x ./scripts/use_refresh_token
           ./scripts/use_refresh_token $client_id $client_secret $refresh_token >> output.json
           token=$(cat output.json | jq ".access_token")
-          echo "::set-output name=token::$token"
-          echo Debugging
-          echo $token
-          echo ${{ steps.get_token.outputs.token }}
-          cat output.json
       - name: Update the item in the store
         run: |
           chmod +x ./scripts/update_item
@@ -40,4 +34,4 @@ jobs:
       - name: Publish the item to trusted testers
         run:  |
           chmod +x ./scripts/publish_item
-          ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
+      #    ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
