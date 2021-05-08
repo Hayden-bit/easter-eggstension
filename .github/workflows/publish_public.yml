@@ -27,15 +27,18 @@ jobs:
           ./scripts/use_refresh_token $client_id $client_secret $refresh_token >> output.json
           token=$(cat output.json | jq ".access_token")
           echo "::set-output name=token::$token"
+          echo "Here"
+          cat output.json
+          echo $(cat output.json | jq ".access_token")
           echo $token
           echo ${{ steps.get_token.outputs.token }}
       - name: Update the item in the store
         run: |
           echo ${{ steps.get_token.outputs.token }}
           chmod +x ./scripts/update_item
-          ./scripts/update_item ${{ steps.get_token.outputs.token }} $app_id extension.zip
+      #    ./scripts/update_item ${{ steps.get_token.outputs.token }} $app_id extension.zip
       # Might need some time to wait in-between here
       - name: Publish the item to the public
         run:  |
           chmod +x ./scripts/publish_item
-          ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id default
+      #    ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id default
