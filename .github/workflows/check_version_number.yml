@@ -1,0 +1,25 @@
+name: Compare current versus incoming version number
+
+on:
+  pull_request:
+    branches: [ dev ]
+  workflow_dispatch:
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Prepare script
+        run: |
+          mv ./scripts/version_check ./version_check
+          chmod +x ./version_check
+      - name: Run script
+        run: |
+          ./version_check
+          if [[ $? == 0 ]] ; then
+            echo "Ok new version"
+          else
+            echo "Bad new version!"
+            exit 1
+          fi
