@@ -34,4 +34,4 @@ jobs:
       - name: Publish the item to trusted testers
         run:  |
           chmod +x ./scripts/publish_item
-      #    ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
+          ./scripts/publish_item ${{ steps.get_token.outputs.token }} $app_id trustedTesters
