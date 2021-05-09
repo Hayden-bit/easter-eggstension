@@ -31,7 +31,7 @@ if (Math.random() >= 0.6 || DEBUG) {
 	if (r <= .48) { color = "red"; } else
 	if (r <= .72) { color = "green"; } else
 	if (r <= .96) { color = "blue"; } else
-	{ color = "dragon"; /*console.log("showing dragon, r is: " + r);*/ }
+	{ color = "dragon"; }
 
 	// Spawn at random location (top/bottom right/left)
 	let position = Math.floor(Math.random()*4) // [0,3], Math.random is [0,1)
