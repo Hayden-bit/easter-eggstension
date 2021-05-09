@@ -15,8 +15,8 @@ let eggNames = {
 	"dragon": "The Illusive Dragon Egg"
 };
 
-// Only spawn an egg with 40% probability
-if (Math.random() >= 0.6 || DEBUG) {
+// Only spawn an egg with 60% probability
+if (Math.random() >= 0.4 || DEBUG) {
 	// Spawn random egg from collection
 	// Yummy Yellow: 24%
 	// Ridiculous Red 24%
