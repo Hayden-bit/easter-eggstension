@@ -12,6 +12,7 @@ let eggNames = {
 	"red": "Ridiculous Red",
 	"green": "Gluttonous Green",
 	"blue": "Succulent Sapphire",
+	"orange": "Golden Orange",
 	"dragon": "The Illusive Dragon Egg"
 };
 
@@ -22,6 +23,7 @@ if (Math.random() >= 0.6 || DEBUG) {
 	// Ridiculous Red 24%
 	// Gluttonous Green 24%
 	// Succulent Sapphire: 24%
+	// Golden Orange: 24%
 	// Dragon Egg: 4%
 	var color;
 	let r = Math.random();
@@ -31,6 +33,7 @@ if (Math.random() >= 0.6 || DEBUG) {
 	if (r <= .48) { color = "red"; } else
 	if (r <= .72) { color = "green"; } else
 	if (r <= .96) { color = "blue"; } else
+	if (r <= .120) { color = "orange"; } else
 	{ color = "dragon"; }
 
 	// Spawn at random location (top/bottom right/left)
