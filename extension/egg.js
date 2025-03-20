@@ -13,6 +13,7 @@ let eggNames = {
 	"green": "Gluttonous Green",
 	"blue": "Succulent Sapphire",
 	"dragon": "The Illusive Dragon Egg"
+	"purple": "Popping Purple"
 };
 
 // Only spawn an egg with 40% probability
@@ -23,6 +24,7 @@ if (Math.random() >= 0.6 || DEBUG) {
 	// Gluttonous Green 24%
 	// Succulent Sapphire: 24%
 	// Dragon Egg: 4%
+	// Popping Purple 24%
 	var color;
 	let r = Math.random();
 
@@ -31,6 +33,7 @@ if (Math.random() >= 0.6 || DEBUG) {
 	if (r <= .48) { color = "red"; } else
 	if (r <= .72) { color = "green"; } else
 	if (r <= .96) { color = "blue"; } else
+	if (r <= .120 { color = "purple"; } else
 	{ color = "dragon"; }
 
 	// Spawn at random location (top/bottom right/left)
